@@ -84,7 +84,7 @@
 /* Sticky + Shadow effect */
 .navbar {
   transition: all 0.3s ease;
-   font-family: 'Outfit', sans-serif;
+   /* font-family: 'Outfit', sans-serif; */
 }
 
 /* Close icon for mobile */

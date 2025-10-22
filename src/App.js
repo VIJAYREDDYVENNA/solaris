@@ -15,8 +15,7 @@ function App() {
           <Route path="/projects/project1" element={<div>Project 1</div>} />
           <Route path="/projects/project2" element={<div>Project 2</div>} />
           <Route path="/projects/project3" element={<div>Project 3</div>} />
-          <Route path="/projects/project4" element={<div>Project 4</div>} />
-    
+          <Route path="/projects/project4" element={<div>Project 4</div>} />    
         <Route path="/contact-us" element={<div>Contact Us</div>} />
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>

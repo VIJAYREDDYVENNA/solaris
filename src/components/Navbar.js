@@ -54,19 +54,19 @@ const Navbar = () => {
             <ul className="navbar-nav ms-auto align-items-lg-center">
               <li className="nav-item">
                 <NavLink to="/" className="nav-link navlink-darkblue">
-                  HOME
+                  Home
                 </NavLink>
               </li>
 
               <li className="nav-item">
                 <NavLink to="/about" className="nav-link navlink-darkblue">
-                  ABOUT
+                  About
                 </NavLink>
               </li>
 
               <li className="nav-item dropdown">
                 <span className={`nav-link navlink-darkblue dropdown-text ${isProjectActive ? 'active' : ''}`}>
-                  PROJECTS 
+                  Projects 
                   <svg className="dropdown-arrow ms-1 mb-1" width="15" height="10" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -74,22 +74,22 @@ const Navbar = () => {
                 <ul className="dropdown-menu dropdown-hover shadow">
                   <li>
                     <NavLink className="dropdown-item dropdown-darkblue" to="/projects/project1">
-                      PROJECT 1
+                      Project 1
                     </NavLink>
                   </li>
                   <li>
                     <NavLink className="dropdown-item dropdown-darkblue" to="/projects/project2">
-                      PROJECT 2
+                      Project 2
                     </NavLink>
                   </li>
                   <li>
                     <NavLink className="dropdown-item dropdown-darkblue" to="/projects/project3">
-                      PROJECT 3
+                      Project 3
                     </NavLink>
                   </li>
                   <li>
                     <NavLink className="dropdown-item dropdown-darkblue" to="/projects/project4">
-                      PROJECT 4
+                      Project 4
                     </NavLink>
                   </li>
                 </ul>
@@ -97,7 +97,7 @@ const Navbar = () => {
 
               <li className="nav-item">
                 <NavLink to="/contact-us" className="nav-link navlink-darkblue">
-                  CONTACT
+                  Contact
                 </NavLink>
               </li>
             </ul>
@@ -111,19 +111,19 @@ const Navbar = () => {
           <ul className="mobile-nav-list">
             <li className="mobile-nav-item">
               <NavLink to="/" className="mobile-nav-link" onClick={closeMenu}>
-                HOME
+                Home
               </NavLink>
             </li>
             
             <li className="mobile-nav-item">
               <NavLink to="/about" className="mobile-nav-link" onClick={closeMenu}>
-                ABOUT
+                About
               </NavLink>
             </li>
 
             <li className="mobile-nav-item">
               <div className={`mobile-nav-link mobile-nav-expandable ${isProjectActive ? 'active' : ''}`} onClick={toggleProjects}>
-                PROJECTS
+                Projects
                 <span className={`mobile-nav-icon ${projectsOpen ? 'rotate' : ''}`}>+</span>
               </div>
             </li>
@@ -158,7 +158,7 @@ const Navbar = () => {
 
             <li className="mobile-nav-item">
               <NavLink to="/contact-us" className="mobile-nav-link" onClick={closeMenu}>
-                CONTACT
+                Contact
               </NavLink>
             </li>
           </ul>
