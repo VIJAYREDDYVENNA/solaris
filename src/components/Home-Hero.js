@@ -1,104 +1,139 @@
-import { useState, useEffect,useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import "../components_css/Home-Hero.css"
-import Video1 from "../Videos/HomeVideo1.mp4"
+import Video1 from "../Videos/HomeVideo4.mp4"
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
-export default function HeroSection() {
-  const heroRef = useRef(null)
-  const shapeRef = useRef(null)
-  const contentRef = useRef(null)
-  const [currentTextIndex, setCurrentTextIndex] = useState(0)
+function App() {
+  const [currentTagline, setCurrentTagline] = useState(0);
+  const heroRef = useRef(null);
+  const shapeRef = useRef(null);
+  const nextSectionRef = useRef(null);
+  const scrollIndicatorRef = useRef(null);
 
-  const rotatingTexts = [
-    "Clean energy, built for the future",
-    "Sustainable power for tomorrow",
-    "Renewable solutions today",
-    "Green energy revolution",
-  ]
+  const taglines = [
+    'Powering Tomorrow with Clean Energy',
+    'Sustainable Solutions for a Better Future',
+    'Harnessing Nature for Global Impact',
+    'Innovation Meets Sustainability'
+  ];
 
-  // Text rotation effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % rotatingTexts.length)
-    }, 4000)
+      setCurrentTagline((prev) => (prev + 1) % taglines.length);
+    }, 4000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
-  // GSAP ScrollTrigger animation
   useEffect(() => {
-    const hero = heroRef.current
-    const shape = shapeRef.current
-    const content = contentRef.current
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: '+=150%',
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        }
+      });
 
-    if (!hero || !shape || !content) return
+      tl.fromTo(shapeRef.current,
+        {
+          scale: 0.3,
+          opacity: 0,
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          ease: 'power2.out',
+          duration: 1,
+        }
+      )
+      .to(scrollIndicatorRef.current,
+        {
+          opacity: 0,
+          duration: 0.3,
+        },
+        0
+      );
+    });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: hero,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1.5,
-        pin: true,
-        anticipatePin: 1,
-      },
-    })
-
-    tl.fromTo(
-      shape,
-      {
-        opacity: 0,
-        scale: 0.5,
-      },
-      {
-        opacity: 1,
-        scale: 25,
-        duration: 1,
-        ease: "power2.inOut",
-      },
-    )
-
-    // Fade out hero content as shape expands
-    tl.to(
-      content,
-      {
-        opacity: 0,
-        duration: 0.4,
-        ease: "power2.out",
-      },
-      0,
-    )
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-    }
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={heroRef} className="hero-section">
-      <video className="hero-video" autoPlay loop muted playsInline>
-        <source src={Video1} type="video/mp4" />
-      </video>
+    <>
+     
 
-      <svg ref={shapeRef} className="expanding-shape" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fill="white"
-          d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.8C64.8,56.4,53.8,69,39.8,76.8C25.8,84.6,8.8,87.6,-7.1,87.2C-23,86.8,-37.9,82.9,-51.3,75.3C-64.7,67.7,-76.6,56.4,-83.8,42.4C-91,28.4,-93.5,11.7,-91.6,-4.2C-89.7,-20.1,-83.4,-35.2,-74.3,-48.5C-65.2,-61.8,-53.3,-73.3,-39.1,-80.4C-24.9,-87.5,-8.3,-90.2,5.7,-88.9C19.7,-87.6,30.6,-83.6,44.7,-76.4Z"
-          transform="translate(100 100)"
-        />
-      </svg>
+      <div className="Home-Hero-app">
+        <section className="Home-Hero-hero-section" ref={heroRef}>
+          <video className="Home-Hero-hero-video" autoPlay muted loop playsInline>
+            <source src={Video1} type="video/mp4" />
+          </video>
 
-      <div ref={contentRef} className="hero-content">
-        <h1 className="hero-title">{rotatingTexts[currentTextIndex]}</h1>
+          <div className="Home-Hero-hero-overlay"></div>
 
-        <div className="hero-buttons">
-          <button className="btn btn-primary">Get Started</button>
-          <button className="btn btn-secondary">Learn More</button>
-        </div>
+          <div className="Home-Hero-hero-content">
+            <div className="Home-Hero-tagline-container">
+              {taglines.map((tagline, index) => (
+                <p
+                  key={index}
+                  className={`Home-Hero-tagline ${index === currentTagline ? 'Home-Hero-active' : ''}`}
+                >
+                  {tagline}
+                </p>
+              ))}
+            </div>
+            <button className="Home-Hero-explore-button">
+              Explore
+              <span className="Home-Hero-button-arrow">→</span>
+            </button>
+          </div>
+
+          <div className="Home-Hero-scroll-indicator" ref={scrollIndicatorRef}>
+            <div className="Home-Hero-scroll-arrow"></div>
+          </div>
+
+          <div className="Home-Hero-white-shape" ref={shapeRef}></div>
+        </section>
+
+        <section className="Home-Hero-content-section" ref={nextSectionRef}>
+          <div className="Home-Hero-container">
+            <h2>Our Solutions</h2>
+            <p className="Home-Hero-section-description">
+              We deliver cutting-edge solar technology and renewable energy solutions
+              that power communities while protecting our planet.
+            </p>
+            <button className="Home-Hero-cta-button">Explore Our Services</button>
+          </div>
+        </section>
+
+        <section className="Home-Hero-features-section">
+          <div className="Home-Hero-container">
+            <h2>Why Choose Solaris</h2>
+            <div className="Home-Hero-features-grid">
+              <div className="Home-Hero-feature">
+                <h3>100% Clean</h3>
+                <p>Zero emissions, pure renewable energy</p>
+              </div>
+              <div className="Home-Hero-feature">
+                <h3>Cost Effective</h3>
+                <p>Save money while saving the planet</p>
+              </div>
+              <div className="Home-Hero-feature">
+                <h3>Reliable</h3>
+                <p>Consistent energy supply, day and night</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
-  )
+    </>
+  );
 }
+
+export default App;
