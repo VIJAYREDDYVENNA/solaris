@@ -1,8 +1,10 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home.js';
-import About from './Pages/About.js'
+
+import Home from './pages/Home.js';
+import About from './pages/About.js'
+
 
 
 
