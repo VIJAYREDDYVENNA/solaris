@@ -1,91 +1,341 @@
-.next-section {
-  min-height: 100vh;
-  background: white;
-  padding: 5rem 2rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fafafa;
+}
+
+.hero-Aboutus-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.hero-Aboutus-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.hero-Aboutus-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3ba54d;
+  letter-spacing: 2px;
+}
+
+.hero-Aboutus-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.hero-Aboutus-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.hero-Aboutus-nav a:hover {
+  color: #3ba54d;
+}
+
+/* Hero Section */
+.hero-Aboutus-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 60px 0;
+  position: relative;
+}
+
+/* Background ABOUT US Text */
+.hero-Aboutus-hero::before {
+  content: 'ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US';
+  position: absolute;
+  top: -80px;
+  left: -100px;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(59, 165, 77, 0.08);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1;
+  width: 200%;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: 20px;
+  overflow: hidden;
+}
+
+.hero-Aboutus-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Badge Group */
+.hero-Aboutus-badge-group {
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 4;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.next-content {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+.hero-Aboutus-badge {
+  display: inline-block;
+  background-color: #3ba54d;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.next-title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 1.5rem;
-  text-align: center;
+.hero-Aboutus-badge-text {
+  font-size: 14px;
+  color: #3ba54d;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Title */
+.hero-Aboutus-title {
+  font-size: 52px;
   line-height: 1.2;
-}
-
-.next-description {
-  font-size: 1.25rem;
-  color: #4a4a4a;
-  line-height: 1.8;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 4rem;
-}
-
-.next-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.feature-card {
-  background: #f8f8f8;
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.feature-card h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
   color: #1a1a1a;
-  margin-bottom: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
-.feature-card p {
-  font-size: 1rem;
+.hero-Aboutus-description {
+  font-size: 16px;
+  line-height: 1.7;
   color: #666;
-  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Stats */
+.hero-Aboutus-stats {
+  display: flex;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.hero-Aboutus-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-Aboutus-stat-icon {
+  font-size: 32px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.hero-Aboutus-stat-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #3ba54d;
+}
+
+.hero-Aboutus-stat-label {
+  font-size: 14px;
+  color: #666;
+}
+
+/* CTA Section */
+.hero-Aboutus-cta-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.hero-Aboutus-learn-more-btn {
+  background-color: #3ba54d;
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-Aboutus-learn-more-btn:hover {
+  background-color: #2a8a3d;
+}
+
+.hero-Aboutus-contact-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-Aboutus-phone-icon {
+  font-size: 20px;
+  color: #3ba54d;
+}
+
+.hero-Aboutus-contact-label {
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.hero-Aboutus-phone-number {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1a1a1a;
+  display: block;
+}
+
+/* Image Section */
+.hero-Aboutus-image-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-Aboutus-image-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-Aboutus-image-placeholder {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+  background: #f0f0f0;
+}
+
+.hero-Aboutus-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Green vertical bars on sides */
+.hero-Aboutus-image-placeholder::before,
+.hero-Aboutus-image-placeholder::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background-color: #3ba54d;
+  z-index: 10;
+}
+
+.hero-Aboutus-image-placeholder::before {
+  left: -24px;
+}
+
+.hero-Aboutus-image-placeholder::after {
+  right: -24px;
+}
+
+/* Experience Badge */
+.hero-Aboutus-experience-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: white;
+  padding: 14px 18px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid #3ba54d;
+  z-index: 5;
+}
+
+.hero-Aboutus-badge-number {
+  font-size: 22px;
+  font-weight: bold;
+  color: #3ba54d;
+}
+
+.hero-Aboutus-badge-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-Aboutus-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 0;
+  }
+
+  .hero-Aboutus-title {
+    font-size: 40px;
+  }
+
+  .hero-Aboutus-cta-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .hero-Aboutus-image-placeholder::before,
+  .hero-Aboutus-image-placeholder::after {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
-  .next-section {
-    padding: 3rem 1.5rem;
+  .hero-Aboutus-nav {
+    gap: 15px;
   }
 
-  .next-title {
-    font-size: 2rem;
+  .hero-Aboutus-title {
+    font-size: 32px;
   }
 
-  .next-description {
-    font-size: 1.125rem;
+  .hero-Aboutus-description {
+    font-size: 14px;
   }
 
-  .next-features {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .hero-Aboutus-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-Aboutus-cta-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-Aboutus-hero {
+    gap: 30px;
   }
 }
