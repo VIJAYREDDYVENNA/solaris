@@ -1,8 +1,91 @@
+import React, { useState, useEffect } from 'react';
+import About2 from "../images/Home/Home-About1.webp"
+import About1 from "../images/Home/Home-About2.png"
+const SolarPanelHero = () => {
+  const [isVisible, setIsVisible] = useState(false);
 
-function GreenSolarHero() {
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
     <div className="hero-container">
-      <style>{`
+      <div className="content-wrapper">
+        <div className={`left-section ${isVisible ? 'fade-in' : ''}`}>
+          <h1 className="main-heading">
+            REDEFINING SOLAR EFFICIENCY WITH PRECISION ENGINEERED PV MODULES
+          </h1>
+          
+          <p className="description">
+            TOPCon technology redefines performance limits through advanced 
+            passivation and selective contacts. This advanced architecture 
+            reduces interface recombination and contact resistance, resulting in 
+            higher efficiency and improved power output.
+          </p>
+
+          <div className="features-grid">
+            <div className={`feature-card ${isVisible ? 'slide-up' : ''}`} style={{animationDelay: '0.2s'}}>
+              <h3 className="feature-title">30 YEARS</h3>
+              <p className="feature-text">
+                Linear Performance Warranty
+              </p>
+            </div>
+
+            <div className={`feature-card ${isVisible ? 'slide-up' : ''}`} style={{animationDelay: '0.3s'}}>
+              <h3 className="feature-title">15 YEARS</h3>
+              <p className="feature-text">
+                Product Warranty
+              </p>
+            </div>
+
+            <div className={`feature-card ${isVisible ? 'slide-up' : ''}`} style={{animationDelay: '0.4s'}}>
+              <div className="feature-content">
+                <h3 className="feature-title-small">100% String Level EL &</h3>
+                <p className="feature-text">
+                  Triple Stage PV Module EL Testing
+                </p>
+                <p className="feature-text-small">PID Resistant</p>
+                <p className="feature-text-small">
+                  Guaranteed Positive Tolerance
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <button className={`cta-button ${isVisible ? 'fade-in' : ''}`} style={{animationDelay: '0.5s'}}>
+            Find Out More →
+          </button>
+        </div>
+
+        <div className={`right-section ${isVisible ? 'fade-in-right' : ''}`}>
+          <div className="image-container">
+            <img 
+              src={About1}
+              alt="Solar Panel" 
+              className="solar-panel-image"
+            />
+          </div>
+
+          <div className="specs-container">
+            <div className={`spec-badge ${isVisible ? 'pop-in' : ''}`} style={{animationDelay: '0.6s'}}>
+              <div className="spec-label">N-Type</div>
+              <div className="spec-value">TOPCon Cell</div>
+            </div>
+
+            <div className={`spec-badge ${isVisible ? 'pop-in' : ''}`} style={{animationDelay: '0.7s'}}>
+              <div className="spec-label">Capacity Rating</div>
+              <div className="spec-value">of up to 635 Wp</div>
+            </div>
+
+            <div className={`spec-badge ${isVisible ? 'pop-in' : ''}`} style={{animationDelay: '0.8s'}}>
+              <div className="spec-label">Up to 23.51%</div>
+              <div className="spec-value">Module Efficiency</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
         * {
           margin: 0;
           padding: 0;
@@ -10,352 +93,320 @@ function GreenSolarHero() {
         }
 
         .hero-container {
+          background-color: #e8f0e8;
           min-height: 100vh;
-          background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
-          padding: 60px 80px;
-        //   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          padding: 60px 40px;
+        //   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
 
-        .hero-content {
+        .content-wrapper {
+          max-width: 1400px;
+          margin: 0 auto;
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 60px;
-          align-items: center;
-          max-width: 1400px;
-          margin: 0 auto;
+          align-items: start;
         }
 
         .left-section {
-          position: relative;
-          z-index: 1;
+          opacity: 0;
         }
 
-        .tag-container {
-          position: relative;
-          margin-bottom: 30px;
+        .left-section.fade-in {
+          animation: fadeIn 0.8s ease-out forwards;
         }
 
-        .background-text {
-          position: absolute;
-          top: -40px;
-          left: -10px;
-          font-size: 120px;
-          font-weight: 900;
-          color: rgba(76, 175, 80, 0.08);
-          letter-spacing: 8px;
-          z-index: 0;
-          white-space: nowrap;
-          user-select: none;
-          pointer-events: none;
-        }
-
-        .tag {
-          position: relative;
-          display: inline-block;
-          background: #4CAF50;
-          color: white;
-          padding: 8px 20px;
-          font-size: 14px;
+        .main-heading {
+          font-size: 3.2rem;
           font-weight: 700;
-          letter-spacing: 1px;
-          z-index: 1;
-        }
-
-        .tag-text {
-          display: inline;
-        }
-
-        .tag-text:first-child {
-          margin-right: 8px;
-        }
-
-        .tag-text:last-child {
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .main-title {
-          font-size: 56px;
-          font-weight: 800;
-          color: #1a1a1a;
-          line-height: 1.2;
-          margin-bottom: 24px;
+          color: #2d9d6d;
+          line-height: 1.15;
+          margin-bottom: 25px;
+          letter-spacing: -0.5px;
         }
 
         .description {
-          font-size: 18px;
-          color: #666;
-          line-height: 1.8;
+          font-size: 1rem;
+          color: #4a5568;
+          line-height: 1.7;
           margin-bottom: 40px;
         }
 
-        .stats-container {
-          display: flex;
-          align-items: center;
-          gap: 40px;
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 15px;
           margin-bottom: 40px;
         }
 
-        .stat-item {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-        }
-
-        .stat-icon {
-          width: 60px;
-          height: 60px;
-          background: #e8f5e9;
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 32px;
-        }
-
-        .stat-content {
+        .feature-card {
+          background-color: #c8e6d0;
+          padding: 25px 18px;
+          border-radius: 6px;
+          opacity: 0;
+          transform: translateY(30px);
+          min-height: 180px;
           display: flex;
           flex-direction: column;
         }
 
-        .stat-number {
-          font-size: 36px;
-          font-weight: 800;
-          color: #4CAF50;
-          line-height: 1;
-          margin-bottom: 4px;
+        .feature-card.slide-up {
+          animation: slideUp 0.6s ease-out forwards;
         }
 
-        .stat-label {
-          font-size: 15px;
-          color: #666;
-          font-weight: 500;
+        .feature-title {
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: #1a5940;
+          margin-bottom: 12px;
         }
 
-        .cta-container {
+        .feature-title-small {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: #1a5940;
+          margin-bottom: 10px;
+          line-height: 1.3;
+        }
+
+        .feature-content {
           display: flex;
-          align-items: center;
-          gap: 30px;
+          flex-direction: column;
+          gap: 8px;
         }
 
-        .learn-more-btn {
-          background: #4CAF50;
-          color: white;
+        .feature-text {
+          font-size: 0.95rem;
+          color: #2d5f4a;
+          line-height: 1.4;
+        }
+
+        .feature-text-small {
+          font-size: 0.9rem;
+          color: #2d5f4a;
+          line-height: 1.3;
+          margin-top: 4px;
+        }
+
+        .cta-button {
+          background-color: #3fcc7f;
+          color: #1a5940;
+          font-size: 1rem;
+          font-weight: 600;
+          padding: 16px 35px;
           border: none;
-          padding: 18px 40px;
-          font-size: 16px;
-          font-weight: 700;
+          border-radius: 6px;
           cursor: pointer;
-          border-radius: 4px;
           transition: all 0.3s ease;
+          opacity: 0;
+          display: inline-block;
         }
 
-        .learn-more-btn:hover {
-          background: #45a049;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        .cta-button.fade-in {
+          animation: fadeIn 0.8s ease-out forwards;
         }
 
-        .call-section {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-        }
-
-        .phone-icon {
-          width: 50px;
-          height: 50px;
-          background: #4CAF50;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 24px;
-        }
-
-        .call-content {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .call-label {
-          font-size: 14px;
-          color: #666;
-          margin-bottom: 4px;
-        }
-
-        .phone-number {
-          font-size: 18px;
-          font-weight: 700;
-          color: #1a1a1a;
+        .cta-button:hover {
+          background-color: #35b56f;
+          transform: translateX(5px);
+          box-shadow: 0 4px 12px rgba(63, 204, 127, 0.3);
         }
 
         .right-section {
-          position: relative;
+          opacity: 0;
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          align-items: flex-start;
+        }
+
+        .right-section.fade-in-right {
+          animation: fadeInRight 1s ease-out forwards;
         }
 
         .image-container {
+          width: 65%;
+          flex-shrink: 0;
           position: relative;
           border-radius: 12px;
           overflow: hidden;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+          animation: float 6s ease-in-out infinite;
         }
 
-        .hero-image {
+        .solar-panel-image {
           width: 100%;
           height: auto;
           display: block;
+          object-fit: cover;
         }
 
-        .experience-badge {
-          position: absolute;
-          bottom: 60px;
-          left: 40px;
-          background: white;
-          padding: 24px 32px;
-          border-radius: 8px;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        .specs-container {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          flex: 1;
         }
 
-        .experience-number {
-          font-size: 42px;
-          font-weight: 800;
-          color: #1a1a1a;
-          line-height: 1;
-          margin-bottom: 4px;
+        .spec-badge {
+          background-color: #d4ead9;
+          padding: 14px 18px;
+          border-radius: 6px;
+          opacity: 0;
+          transform: scale(0.8);
         }
 
-        .experience-label {
-          font-size: 15px;
-          color: #666;
+        .spec-badge.pop-in {
+          animation: popIn 0.5s ease-out forwards;
+        }
+
+        .spec-label {
+          font-size: 0.85rem;
+          color: #2d5f4a;
+          margin-bottom: 3px;
           font-weight: 500;
         }
 
-        .green-accent-left {
-          position: absolute;
-          width: 6px;
-          height: 280px;
-          background: #4CAF50;
-          top: 50%;
-          right: -30px;
-          transform: translateY(-50%);
-          border-radius: 3px;
+        .spec-value {
+          font-size: 0.95rem;
+          color: #1a5940;
+          font-weight: 600;
         }
 
-        .green-accent-right {
-          position: absolute;
-          width: 6px;
-          height: 180px;
-          background: #4CAF50;
-          top: 20%;
-          right: -60px;
-          transform: translateY(-50%);
-          border-radius: 3px;
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
-        @media (max-width: 1024px) {
-          .hero-content {
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes popIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        @media (max-width: 1200px) {
+          .main-heading {
+            font-size: 2.8rem;
+          }
+
+          .content-wrapper {
+            gap: 50px;
+          }
+        }
+
+        @media (max-width: 992px) {
+          .content-wrapper {
             grid-template-columns: 1fr;
             gap: 40px;
           }
 
-          .background-text {
-            font-size: 80px;
+          .main-heading {
+            font-size: 2.5rem;
           }
 
-          .main-title {
-            font-size: 42px;
+          .features-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
 
-          .hero-container {
-            padding: 40px;
+          .feature-card:last-child {
+            grid-column: 1 / -1;
+          }
+
+          .right-section {
+            flex-direction: column;
+          }
+
+          .image-container {
+            width: 100%;
           }
         }
 
         @media (max-width: 768px) {
-          .stats-container {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 24px;
+          .hero-container {
+            padding: 40px 20px;
           }
 
-          .cta-container {
-            flex-direction: column;
-            align-items: flex-start;
+          .main-heading {
+            font-size: 2rem;
           }
 
-          .background-text {
-            font-size: 60px;
-            top: -30px;
+          .description {
+            font-size: 0.95rem;
           }
 
-          .main-title {
-            font-size: 32px;
+          .features-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .feature-card:last-child {
+            grid-column: 1;
+          }
+
+          .feature-card {
+            min-height: auto;
+            padding: 20px 16px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .main-heading {
+            font-size: 1.6rem;
+          }
+
+          .feature-title {
+            font-size: 1.2rem;
+          }
+
+          .cta-button {
+            width: 100%;
+            text-align: center;
           }
         }
       `}</style>
-
-      <div className="hero-content">
-        <div className="left-section">
-          <div className="tag-container">
-            <div className="background-text">ABOUT US</div>
-            <div className="tag">
-              <span className="tag-text">ABOUT</span>
-              <span className="tag-text">GREEN SOLAR</span>
-            </div>
-          </div>
-
-          <h1 className="main-title">
-            Invest In Solar Energy<br />
-            With Green Solar
-          </h1>
-
-          <p className="description">
-            Green Solar offers sustainable energy solutions, harnessing the power
-            of the sun for eco-friendly homes and businesses. Join us for cleaner,
-            greener energy. Empowering today for a brighter tomorrow!
-          </p>
-
-          <div className="stats-container">
-            <div className="stat-item">
-              <div className="stat-icon">🌱</div>
-              <div className="stat-content">
-                <div className="stat-number">325+</div>
-                <div className="stat-label">Solar Panel Installed</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="cta-container">
-            <button className="learn-more-btn">Learn More</button>
-            <div className="call-section">
-              <div className="phone-icon">📞</div>
-              <div className="call-content">
-                <div className="call-label">Call Us</div>
-                <div className="phone-number">+91 8777576308</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="right-section">
-          <div className="green-accent-left"></div>
-          <div className="green-accent-right"></div>
-          <div className="image-container">
-            <img
-              src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop"
-              alt="Solar energy professionals"
-              className="hero-image"
-            />
-            <div className="experience-badge">
-              <div className="experience-number">7+</div>
-              <div className="experience-label">Years Experience</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
-}
+};
 
-export default GreenSolarHero;
+export default SolarPanelHero;

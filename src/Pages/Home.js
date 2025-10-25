@@ -3,6 +3,9 @@
 import { useState, useEffect, useRef } from "react"
 import HomeHero from "../components/Home-Hero.js"
 import HomeAbout from "../components/Home-About.js"
+import HomeSolaris from "../components/Home-Solaris.js"
+import HomeCta from "../components/Home-Cta.js"
+import HeroLife from "../components/Hero-Life.js"
 export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +20,11 @@ export default function Home() {
   return (
     <div>
       <HomeHero />
+      <HomeSolaris />
+        <HeroLife />
       <HomeAbout />
+    
+      <HomeCta />
     </div>
   );
 

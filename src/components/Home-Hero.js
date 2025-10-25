@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
+import "../components_css/Home-Hero.css"
+import Video1 from "../Videos/HomeVideo4.mp4"
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import Video1 from "../Videos/HomeVideo3.mp4"
-import "../components_css/Home-Hero.css"
+
 gsap.registerPlugin(ScrollTrigger);
 
-function HeroSection() {
+function App() {
   const [currentTagline, setCurrentTagline] = useState(0);
   const heroRef = useRef(null);
   const shapeRef = useRef(null);
-  const contentSectionRef = useRef(null);
+  const nextSectionRef = useRef(null);
   const scrollIndicatorRef = useRef(null);
 
   const taglines = [
@@ -40,36 +41,24 @@ function HeroSection() {
         }
       });
 
-      // Animate white shape expanding
       tl.fromTo(shapeRef.current,
         {
           scale: 0.3,
           opacity: 0,
         },
         {
-          scale: 2,
+          scale: 1,
           opacity: 1,
           ease: 'power2.out',
           duration: 1,
         }
       )
-      // Fade out scroll indicator
       .to(scrollIndicatorRef.current,
         {
           opacity: 0,
           duration: 0.3,
         },
         0
-      )
-      // Reveal content section from the white shape
-      .to(contentSectionRef.current,
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-        },
-        0.6
       );
     });
 
@@ -77,71 +66,74 @@ function HeroSection() {
   }, []);
 
   return (
-    <div className="home-hero-app">
-      <section className="home-hero-hero-section" ref={heroRef}>
-        <video className="home-hero-hero-video" autoPlay muted loop playsInline>
-          <source src={Video1} type="video/mp4" />
-        </video>
+    <>
+     
 
-        <div className="home-hero-hero-overlay"></div>
+      <div className="Home-Hero-app">
+        <section className="Home-Hero-hero-section" ref={heroRef}>
+          <video className="Home-Hero-hero-video" autoPlay muted loop playsInline>
+            <source src={Video1} type="video/mp4" />
+          </video>
 
-        <div className="home-hero-hero-content">
-          <div className="home-hero-tagline-container">
-            {taglines.map((tagline, index) => (
-              <p
-                key={index}
-                className={`home-hero-tagline ${index === currentTagline ? 'home-hero-active' : ''}`}
-              >
-                {tagline}
-              </p>
-            ))}
+          <div className="Home-Hero-hero-overlay"></div>
+
+          <div className="Home-Hero-hero-content">
+            <div className="Home-Hero-tagline-container">
+              {taglines.map((tagline, index) => (
+                <p
+                  key={index}
+                  className={`Home-Hero-tagline ${index === currentTagline ? 'Home-Hero-active' : ''}`}
+                >
+                  {tagline}
+                </p>
+              ))}
+            </div>
+            <button className="Home-Hero-explore-button">
+              Explore
+              <span className="Home-Hero-button-arrow">→</span>
+            </button>
           </div>
-          <button className="home-hero-explore-button">
-            Explore
-            <span className="home-hero-button-arrow">→</span>
-          </button>
-        </div>
 
-        <div className="home-hero-scroll-indicator" ref={scrollIndicatorRef}>
-          <div className="home-hero-scroll-arrow"></div>
-        </div>
+          <div className="Home-Hero-scroll-indicator" ref={scrollIndicatorRef}>
+            {/* <div className="Home-Hero-scroll-arrow"></div> */}
+          </div>
 
-        <div className="home-hero-white-shape" ref={shapeRef}></div>
+          <div className="Home-Hero-white-shape" ref={shapeRef}></div>
+        </section>
 
-        <section className="home-hero-content-section" ref={contentSectionRef}>
-          <div className="home-hero-container">
+        {/* <section className="Home-Hero-content-section" ref={nextSectionRef}>
+          <div className="Home-Hero-container">
             <h2>Our Solutions</h2>
-            <p className="home-hero-section-description">
+            <p className="Home-Hero-section-description">
               We deliver cutting-edge solar technology and renewable energy solutions
               that power communities while protecting our planet.
             </p>
-            <button className="home-hero-cta-button">Explore Our Services</button>
+            <button className="Home-Hero-cta-button">Explore Our Services</button>
           </div>
         </section>
-      </section>
 
-      <section className="home-hero-features-section">
-        <div className="home-hero-container">
-          <h2>Why Choose Solaris</h2>
-          <div className="home-hero-features-grid">
-            <div className="home-hero-feature">
-              <h3>100% Clean</h3>
-              <p>Zero emissions, pure renewable energy</p>
-            </div>
-            <div className="home-hero-feature">
-              <h3>Cost Effective</h3>
-              <p>Save money while saving the planet</p>
-            </div>
-            <div className="home-hero-feature">
-              <h3>Reliable</h3>
-              <p>Consistent energy supply, day and night</p>
+        <section className="Home-Hero-features-section">
+          <div className="Home-Hero-container">
+            <h2>Why Choose Solaris</h2>
+            <div className="Home-Hero-features-grid">
+              <div className="Home-Hero-feature">
+                <h3>100% Clean</h3>
+                <p>Zero emissions, pure renewable energy</p>
+              </div>
+              <div className="Home-Hero-feature">
+                <h3>Cost Effective</h3>
+                <p>Save money while saving the planet</p>
+              </div>
+              <div className="Home-Hero-feature">
+                <h3>Reliable</h3>
+                <p>Consistent energy supply, day and night</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-    </div>
+        </section> */}
+      </div>
+    </>
   );
 }
 
-export default HeroSection;
+export default App;
